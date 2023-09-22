@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Registrar from '@/views/Registrar.vue'
+import CrearSondeos from '@/views/CrearSondeos.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -14,6 +16,11 @@ const routes = [
     path: '/registrar',
     name: 'registrar',
     component: Registrar
+  },
+  {
+    path: '/crear-sondeos',
+    name: 'crear-sondeos',
+    component: CrearSondeos
   },
   {
     path: '/about',

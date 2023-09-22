@@ -1,98 +1,61 @@
 <template>
-    <b-container>
-      <b-card>
-        <b-form @submit.prevent="submitForm">
-          <b-form-group label="Nombre del Sondeo" label-for="nombre">
-            <b-form-input
-              id="nombre"
-              v-model="formData.nombre"
-              :state="!$v.formData.nombre.$error"
-              @input="clearValidation('nombre')"
-              required
-            ></b-form-input>
-            <b-form-invalid-feedback v-if="$v.formData.nombre.$error">
-              El nombre del sondeo es requerido.
-            </b-form-invalid-feedback>
-          </b-form-group>
-  
-          <b-form-group label="Fecha de Publicación" label-for="fechaPublicacion">
-            <b-form-datepicker
-              id="fechaPublicacion"
-              v-model="formData.fechaPublicacion"
-              :state="!$v.formData.fechaPublicacion.$error"
-              @input="clearValidation('fechaPublicacion')"
-              required
-            ></b-form-datepicker>
-            <b-form-invalid-feedback v-if="$v.formData.fechaPublicacion.$error">
-              La fecha de publicación es requerida.
-            </b-form-invalid-feedback>
-          </b-form-group>
-  
-          <b-form-group label="Fecha de Finalización" label-for="fechaFinalizacion">
-            <b-form-datepicker
-              id="fechaFinalizacion"
-              v-model="formData.fechaFinalizacion"
-              :state="!$v.formData.fechaFinalizacion.$error"
-              @input="clearValidation('fechaFinalizacion')"
-              required
-            ></b-form-datepicker>
-            <b-form-invalid-feedback v-if="$v.formData.fechaFinalizacion.$error">
-              La fecha de finalización es requerida.
-            </b-form-invalid-feedback>
-          </b-form-group>
-  
-          <b-form-group label="Imagen" label-for="imagen">
-            <b-form-file
-              id="imagen"
-              v-model="formData.imagen"
-              @input="clearValidation('imagen')"
-              placeholder="Seleccionar imagen"
-              accept="image/*"
-              required
-            ></b-form-file>
-            <b-form-invalid-feedback v-if="$v.formData.imagen.$error">
-              Debes seleccionar una imagen.
-            </b-form-invalid-feedback>
-          </b-form-group>
-  
-          <!-- Otros campos del formulario -->
-  
-          <b-button type="submit" variant="primary">Guardar</b-button>
-        </b-form>
+    <b-container class="">
+        <b-row></b-row>
+      <b-card class="m-2">
+        <b-row class="justify-content-center">
+          <h1>Crear sondeo</h1>
+        </b-row>
+        <b-row>
+          <b-col>
+            <b-form>
+              <b-row class="justify-content-center">
+                <b-col cols="12" sm="6">
+                  <FormInput
+                    label="Nombre"
+                    inputId="nombre"
+                    :inputValue="formData.nombre"
+                    :type="'text'"
+                    :placeholder="'Ingrese su nombre'"
+                    :invalidFeedbackMessage="'Nombre inválido'"
+                  />
+                </b-col>
+                <b-col cols="12" sm="6">
+                    <FormInput
+                      label="Fecha de inicio"
+                      inputId="fechaInicio"
+                      :inputValue="formData.fechaInicio"
+                      :type="'date'"
+                      :placeholder="'Selecciona una fecha y hora'"
+                      :invalidFeedbackMessage="'Fecha de inicio inválida'"
+                    />
+
+                </b-col>
+              </b-row>
+            </b-form>
+          </b-col>
+        </b-row>
       </b-card>
+      <!-- Otros campos de entrada FormInput -->
+      <!-- Puedes repetir el proceso para otros campos de entrada -->
     </b-container>
   </template>
   
+  
   <script>
+  import FormInput from '@/components/form-group/FormInput.vue'; // Asegúrate de que la ruta sea correcta
+  
   export default {
+    components: {
+      FormInput // Registra el componente FormInput para poder usarlo en tu vista
+    },
     data() {
       return {
         formData: {
-          nombre: "",
-          fechaPublicacion: null,
-          fechaFinalizacion: null,
-          imagen: null,
-          // Otros campos aquí...
-        },
+          nombre: '', // Asegúrate de tener los campos de datos correspondientes
+          // Otros campos de datos
+        }
       };
-    },
-    methods: {
-      async submitForm() {
-        // Lógica para enviar el formulario al servidor aquí
-        console.log('Datos del formulario:', this.formData);
-        await axios.post('registro_usuario', this.formData)
-        .then(response => {
-            console.log(response)
-        })
-        .catch(error => {
-            console.log(error)
-        })
-      },
-      clearValidation(field) {
-        // Limpia los mensajes de validación del campo especificado
-        this.$v.formData[field].$reset();
-      },
-    },
+    }
   };
   </script>
   
