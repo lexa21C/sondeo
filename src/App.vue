@@ -1,9 +1,6 @@
 <template>
   <div id="app">
     <Nabvar/>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/registrar">About</router-link>
-    
     <router-view/>
   </div>
 </template>

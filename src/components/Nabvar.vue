@@ -12,8 +12,8 @@
         </b-navbar-nav>
   
         <b-navbar-nav class="ml-auto">
-          <b-nav-item to="/lista-proyecto">Proyectos</b-nav-item>
-          <b-nav-item to="/login">Iniciar Sesión</b-nav-item>
+          <b-nav-item to="/lista-proyecto">Sondeos</b-nav-item>
+          <b-nav-item to="/registrar">Registrar</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
