@@ -12,7 +12,7 @@
         </b-navbar-nav>
   
         <b-navbar-nav class="ml-auto">
-          <b-nav-item to="/lista-proyecto">Sondeos</b-nav-item>
+          <b-nav-item to="/">Sondeos</b-nav-item>
           <b-nav-item to="/crear-sondeos">crear sondeos</b-nav-item>
           <b-nav-item to="/registrar">Registrar</b-nav-item>
         </b-navbar-nav>
